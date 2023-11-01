@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Save Course</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Course Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Course</p>
+
+    <form action="#" th:action="@{/courses/save}"
+          th:object="${course}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{title}"
+               class="form-control mb-4 w-25" placeholder="title">
+
+<!--        <select class="form-control" id="dropDownList">-->
+<!--            <option value="0">select option</option>-->
+<!--            <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>-->
+<!--        </select>-->
+
+        <label>Choose an instructor:</label>
+        <select name="instructorId">
+            <option th:each="instructor : ${instructors}" th:value="${instructor.id}" th:text="${instructor.firstName} + ' ' + ${instructor.lastName} "></option>
+        </select>
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/students/list}">Back to Students List</a>
+
+</div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
